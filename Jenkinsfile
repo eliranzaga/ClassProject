@@ -44,7 +44,7 @@ pipeline {
             if [ "$LANGUAGE" = "Bash" ] || [ "$LANGUAGE" = "All" ]; then
                cd ${WORKSPACE}/scripts/
                chmod 755 *.sh
-               ./bashscript.sh
+               ./bashscript.sh $LANGUAGE 
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi

@@ -1,14 +1,16 @@
 #!/usr/bin/python
 import getpass
+import sys
 
+lang = sys.argv[1]
 username = getpass.getuser()
 
 
 print("Hello", username)
-if LANGUAGE == "All":
+if lang == "All":
 	print("You chose to execute all languages, what a curious!")
 else:
-    print("You chose to execute ", LANGUAGE, " Great choise!")
+    print("You chose to execute ", lang, " Great choise!")
 
 
 with open("hello.txt", "w") as f:   
