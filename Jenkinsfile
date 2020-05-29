@@ -12,9 +12,9 @@ pipeline {
             echo 'Compilation process..'
             sh '''
             if [ "$PARAM" = "C" ]; then
-               yes i did
+               echo "yes i did"
             else
-               fuck off
+               echo "fuck off"
             fi
             '''
             sh '''
