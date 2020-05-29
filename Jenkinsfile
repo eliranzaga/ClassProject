@@ -32,7 +32,7 @@ pipeline {
             sh '''
                cd ${WORKSPACE}/scripts/
                chmod 755 *.py
-              ${WORKSPACE}/scripts/python.py 
+              ${WORKSPACE}/scripts/python.py $LANGUAGE
             '''
             
          }
@@ -44,7 +44,7 @@ pipeline {
             if [ "$LANGUAGE" = "Bash" ] || [ "$LANGUAGE" = "All" ]; then
                cd ${WORKSPACE}/scripts/
                chmod 755 *.sh
-               ./bashscript.sh $LANGUAGE
+               ./bashscript.sh 
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
