@@ -11,11 +11,7 @@ pipeline {
          steps {
             echo 'Compilation process..'
             sh '''
-            if [ "$Language" = "C" ]; then
-               echo "its working"
-            else
-               echo "its working but you chose another param"
-            fi
+            echo $Language
             '''
             sh '''
                 echo "Running bin file"
