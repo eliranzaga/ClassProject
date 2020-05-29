@@ -18,7 +18,9 @@ pipeline {
       }      
         stage("Env Variables") {
             steps {
-                sh echo "$PARAM"
+                sh '''
+                echo "$PARAM"
+                '''
             }
         }    
       stage('Test') {
