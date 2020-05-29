@@ -7,48 +7,31 @@ pipeline {
           checkout scm
         } 
       }
-      stage('Build') {
+      stage('Execute C exe file') {
          steps {
-            echo 'Build process..'            
+            echo 'Compilation process..'
             sh '''
-                cd ${WORKSPACE}/scripts/
-                chmod 755 *.sh
+            echo "$PARAM"
             '''
-         }
-      }      
-        stage("Env Variables") {
-            steps {
-                sh '''
-                echo "$PARAM"
-                '''
-            }
-        }    
-      stage('Test') {
-         steps {
-            echo 'Test process..'
             sh '''
-              echo "Testing input string $PARAM" 
-              cd ${WORKSPACE}/scripts
-              ./reverse.sh $PARAM
-              ./reverse.sh $PARAM > results
+                echo "Running bin file"
+                
             '''
          }
       }
-      stage('Saving Results') {
+      stage('Execute python script') {
          steps {
-            echo 'Saving Results process..'
+            echo 'Execute python script'
             sh '''
-	      report_file="${HOME}/Documents/Deployment/report"
-              mkdir -p ${HOME}/Documents/Deployment/              
-              if [ -f "${report_file}" ]; then
-                echo "file ${report_file} exists"
-              else
-	              touch ${report_file}
-              fi              
-              echo "Build Number $BUILD_NUMBER" >> ${report_file}
-              cat ${WORKSPACE}/scripts/results >> ${report_file}
-	      echo "#############################" >> ${report_file}
+              chmod 755 ${WORKSPACE}/scripts/checkUserName.py
+              ${WORKSPACE}/scripts/checkUserName.py $USER
             '''
+            
+         }
+      }
+      stage('Execute bash script') {
+         steps {
+            echo 'bash script..'
          }
       }
       
