@@ -11,21 +11,24 @@ pipeline {
          steps {
             echo 'Compilation process..'
             sh '''
-            if [ "$PARAM" = "C" ]; then
+            if [ "$PARAM" = "C" ] || [ "$PARAM" = "All" ]; then
                echo "yes i did"
             else
-               echo "fuck off"
+               echo "$PARAM commands only are chosen to be executed!"
             fi
-            '''
-            sh '''
-                echo "Running bin file"
-                
             '''
          }
       }
-      stage('Execute python script') {
+      stage('Execute Python script') {
          steps {
-            echo 'Execute python script'
+            echo 'Execute Python script'
+            sh '''
+            if [ "$PARAM" = "Python" ] || [ "$PARAM" = "All" ]; then
+               echo "yes i did"
+            else
+               echo "$PARAM commands only are chosen to be executed!"
+            fi
+            '''
             sh '''
               chmod 755 ${WORKSPACE}/scripts/checkUserName.py
               ${WORKSPACE}/scripts/checkUserName.py $USER
@@ -36,6 +39,13 @@ pipeline {
       stage('Execute bash script') {
          steps {
             echo 'bash script..'
+            sh '''
+            if [ "$PARAM" = "Bash" ] || [ "$PARAM" = "All" ]; then
+               echo "yes i did"
+            else
+               echo "$PARAM commands only are chosen to be executed!"
+            fi
+            '''
          }
       }
       
