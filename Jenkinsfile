@@ -11,10 +11,10 @@ pipeline {
          steps {
             echo 'Compilation process..'
             sh '''
-            if [ "$PARAM" = "C" ] || [ "$PARAM" = "All" ]; then
+            if [ "$LANGUAGE" = "C" ] || [ "$LANGUAGE" = "All" ]; then
                echo "yes i did"
             else
-               echo "$PARAM commands only are chosen to be executed!"
+               echo "$LANGUAGE commands only are chosen to be executed!"
             fi
             '''
          }
@@ -23,10 +23,10 @@ pipeline {
          steps {
             echo 'Execute Python script'
             sh '''
-            if [ "$PARAM" = "Python" ] || [ "$PARAM" = "All" ]; then
+            if [ "$LANGUAGE" = "Python" ] || [ "$LANGUAGE" = "All" ]; then
                echo "yes i did"
             else
-               echo "$PARAM commands only are chosen to be executed!"
+               echo "$LANGUAGE commands only are chosen to be executed!"
             fi
             '''
             sh '''
@@ -38,12 +38,12 @@ pipeline {
       }
       stage('Execute bash script') {
          steps {
-            echo 'bash script..'
+            echo 'Bash script..'
             sh '''
-            if [ "$PARAM" = "Bash" ] || [ "$PARAM" = "All" ]; then
+            if [ "$LANGUAGE" = "Bash" ] || [ "$LANGUAGE" = "All" ]; then
                echo "yes i did"
             else
-               echo "$PARAM commands only are chosen to be executed!"
+               echo "$LANGUAGE commands only are chosen to be executed!"
             fi
             '''
          }
