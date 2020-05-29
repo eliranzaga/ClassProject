@@ -12,7 +12,7 @@ pipeline {
             echo 'Compilation process..'
             sh '''
             if [ "$LANGUAGE" = "C" ] || [ "$LANGUAGE" = "All" ]; then
-               echo "yes i did"
+               echo "yes i didd"
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
