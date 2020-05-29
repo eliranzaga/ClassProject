@@ -11,7 +11,7 @@ pipeline {
          steps {
             echo 'Compilation process..'
             sh '''
-            echo $Language
+            echo "$Language"
             '''
             sh '''
                 echo "Running bin file"
