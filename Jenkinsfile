@@ -11,7 +11,11 @@ pipeline {
          steps {
             echo 'Compilation process..'
             sh '''
-            echo "$PARAM"
+            if [ "$PARAM" = "C" ]; then
+               yes i did
+            else
+               fuck off
+            fi
             '''
             sh '''
                 echo "Running bin file"
