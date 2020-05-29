@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 pipeline {
   agent { node { label 'slave01' } }
 
@@ -53,44 +52,3 @@ pipeline {
       
    }
 }
-=======
-pipeline {
-  agent { node { label 'slave01' } }
-
-   stages {
-      stage('Clone Sources') {
-        steps {
-          checkout scm
-        } 
-      }
-      stage('Execute C exe file') {
-         steps {
-            echo 'Compilation process..'
-            sh '''
-            echo "Testing input string $Language"
-            '''
-            sh '''
-                echo "Running bin file"
-                
-            '''
-         }
-      }
-      stage('Execute python script') {
-         steps {
-            echo 'Execute python script'
-            sh '''
-              chmod 755 ${WORKSPACE}/scripts/checkUserName.py
-              ${WORKSPACE}/scripts/checkUserName.py $USER
-            '''
-            
-         }
-      }
-      stage('Execute bash script') {
-         steps {
-            echo 'bash script..'
-         }
-      }
-      
-   }
-}
->>>>>>> f4ece583e94369d1355ae105833e025d3afe5f6e
