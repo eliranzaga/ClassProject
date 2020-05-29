@@ -41,7 +41,7 @@ pipeline {
             echo 'Bash script..'
             sh '''
             if [ "$LANGUAGE" = "Bash" ] || [ "$LANGUAGE" = "All" ]; then
-               echo "yes i did"
+               echo "yes i didd"
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
