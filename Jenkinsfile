@@ -30,8 +30,9 @@ pipeline {
             fi
             '''
             sh '''
-              chmod 755 ${WORKSPACE}/scripts/checkUserName.py
-              ${WORKSPACE}/scripts/checkUserName.py $USER
+               cd ${WORKSPACE}/scripts/
+               chmod 755 *.py
+              ${WORKSPACE}/scripts/python.py 
             '''
             
          }
