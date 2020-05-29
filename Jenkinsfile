@@ -11,8 +11,13 @@ pipeline {
          steps {
             echo 'Compilation process..'
             sh '''
+<<<<<<< HEAD
             if [ "$LANGUAGE" = "C" ] || [ "$LANGUAGE" = "All" ]; then
                echo "yes i did"
+=======
+            if [ "$PARAM" = "C" ] || [ "$PARAM" = "All" ]; then
+               echo "yes i didk"
+>>>>>>> fcec91c2bc3863d49fb77fef0a574c726606f10d
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
