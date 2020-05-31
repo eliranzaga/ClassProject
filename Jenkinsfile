@@ -16,6 +16,7 @@ pipeline {
                chmod 755 *.c
                gcc c_script.c -o c_script
 				./c_script
+				./c_script > results
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
@@ -30,6 +31,7 @@ pipeline {
                cd ${WORKSPACE}/scripts/
                chmod 755 *.py
               ${WORKSPACE}/scripts/python.py $LANGUAGE
+              ${WORKSPACE}/scripts/python.py $LANGUAGE > results
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
@@ -45,12 +47,28 @@ pipeline {
                cd ${WORKSPACE}/scripts/
                chmod 755 *.sh
                ./bashscript.sh 
+               ./bashscript.sh > results
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
             '''
          }
       }
+            stage('Saving Log file') {
+         steps {
+            echo 'Saving log file process..'
+            sh '''
+	      log_file="${HOME}/Documents/ProjectLog/log"
+              mkdir -p ${HOME}/Documents/ProjectLog/              
+              if [ -f "${log_file}" ]; then
+                echo "file ${log_file} exists"
+              else
+	              touch ${log_file}
+              fi              
+              echo "Build Number $BUILD_NUMBER" >> ${log_file}
+              cat ${WORKSPACE}/scripts/results >> ${log_file}
+	      echo "#############################" >> ${log_file}
+            '''
       
    }
 }
