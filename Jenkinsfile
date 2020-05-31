@@ -63,6 +63,7 @@ pipeline {
                cd ${WORKSPACE}/scripts/
                chmod 755 *.java
                javac java.java
+               java java
                java java > results
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
