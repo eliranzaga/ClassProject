@@ -69,6 +69,8 @@ pipeline {
               cat ${WORKSPACE}/scripts/results >> ${log_file}
 	      echo "#############################" >> ${log_file}
             '''
+         }
+      }
       
    }
 }
