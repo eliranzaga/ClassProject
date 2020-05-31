@@ -9,7 +9,7 @@ pipeline {
       }
       stage('Execute C exe file') {
          steps {
-            echo 'Compilation process..'
+            echo 'Compilation c script'
             sh '''
             if [ "$LANGUAGE" = "C" ] || [ "$LANGUAGE" = "All" ]; then
                cd ${WORKSPACE}/scripts/
@@ -48,6 +48,22 @@ pipeline {
                chmod 755 *.sh
                ./bashscript.sh 
                ./bashscript.sh > results
+            else
+               echo "$LANGUAGE commands only are chosen to be executed!"
+            fi
+            '''
+         }
+      }
+      
+            stage('Execute java script') {
+         steps {
+            echo 'Compilation java script..'
+            sh '''
+            if [ "$LANGUAGE" = "Java" ] || [ "$LANGUAGE" = "All" ]; then
+               cd ${WORKSPACE}/scripts/
+               chmod 755 *.java
+               javac java.java
+               java java > results
             else
                echo "$LANGUAGE commands only are chosen to be executed!"
             fi
