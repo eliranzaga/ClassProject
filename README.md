@@ -1,2 +1,1 @@
-# ClassProject
-jk
+Class project
